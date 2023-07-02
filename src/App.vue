@@ -1,15 +1,19 @@
 <template>
   <main>
     <div class="overlay">
-<div class="modal">
-  <textarea name="" id="note" cols="30" rows="10"></textarea>
-  <button>Add note</button>
-</div>
+
+      <div class="modal" v-show="showmodal">
+        <div class="ic">
+          <i class="fa fa-times-circle" aria-hidden="true"></i>
+        </div>
+        <textarea name="" id="note" cols="30" rows="10"></textarea>
+        <button>Add note</button>
+      </div>
     </div>
     <div class="container">
       <header>
         <h1>Notes</h1>
-        <button>+</button>
+        <button @click="showmodal = true">+</button>
       </header>
       <div class="cards-container">
         <div class="card">
@@ -33,7 +37,16 @@
   </main>
 </template>
 <script>
+export default {
+  data() {
+    return {
+      showmodal: true
+    }
+  },
+  methods: {
 
+  }
+}
 </script>
 <style scoped>
 main {
@@ -85,6 +98,19 @@ header button {
   border-right: 8px;
 }
 
+/* .ic {
+  position: relative;
+} */
+
+.fa-times-circle {
+  position: absolute;
+  color: black;
+  font-size: 30px;
+  border-radius: 50%;
+  top: 0%;
+  right: 0%;
+}
+
 .main-text {
   color: black;
   font-size: 15px;
@@ -100,34 +126,38 @@ header button {
   display: flex;
   flex-wrap: wrap;
 }
-.overlay{
+
+.overlay {
   position: absolute;
   width: 100%;
+
   height: 100%;
   background: rgba(54, 17, 17, 0.349);
   z-index: 10;
   display: flex;
   align-items: center;
-justify-content: center;
-  }
-  .modal{
-    width: 750px;
-    padding: 30px;
-    display: flex;
-    position: relative;
-    background-color: white;
-    padding: 30px;
-    flex-direction: column;
-  }
-  .modal button{
-    padding: 10px 20px;
-    font-size: 20px;
-    width: 100%;
-    border: none;
-   margin-top: 15px;
-   border-radius: 8px;
-   color: white;
-    background-color: blueviolet;
-    cursor: pointer;
-  }
-</style>
+  justify-content: center;
+}
+
+.modal {
+  border-radius: 5px;
+  width: 750px;
+  padding: 30px;
+  display: flex;
+  position: relative;
+  background-color: white;
+  padding: 30px;
+  flex-direction: column;
+}
+
+.modal button {
+  padding: 10px 20px;
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  margin-top: 15px;
+  border-radius: 8px;
+  color: white;
+  background-color: blueviolet;
+  cursor: pointer;
+}</style>
