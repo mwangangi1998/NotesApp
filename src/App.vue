@@ -1,10 +1,10 @@
 <template>
   <main>
-    <div class="overlay">
+    <div class="overlay" v-if="showmodal">
 
-      <div class="modal" v-show="showmodal">
+      <div class="modal">
         <div class="ic">
-          <i class="fa fa-times-circle" aria-hidden="true"></i>
+          <i class="fa fa-times-circle" @click="modalhide()" aria-hidden="true"></i>
         </div>
         <textarea name="" id="note" cols="30" rows="10"></textarea>
         <button>Add note</button>
@@ -40,11 +40,16 @@
 export default {
   data() {
     return {
-      showmodal: true
+      showmodal: false,
+      hidemodel: false
     }
   },
   methods: {
-
+    modalhide(){
+      if (this.showmodal==true) {
+        this.showmodal = false;
+      }
+    }
   }
 }
 </script>
@@ -98,9 +103,7 @@ header button {
   border-right: 8px;
 }
 
-/* .ic {
-  position: relative;
-} */
+
 
 .fa-times-circle {
   position: absolute;
@@ -129,9 +132,9 @@ header button {
 
 .overlay {
   position: absolute;
-  width: 100%;
-
-  height: 100%;
+  width: 90%;
+  padding-top: 8%;
+  max-height: max-content;
   background: rgba(54, 17, 17, 0.349);
   z-index: 10;
   display: flex;
@@ -160,4 +163,5 @@ header button {
   color: white;
   background-color: blueviolet;
   cursor: pointer;
-}</style>
+}
+</style>
